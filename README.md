@@ -19,8 +19,8 @@
 **Reference Architecture:**
 
 ![image](https://user-images.githubusercontent.com/70348437/116184705-2beb0700-a6d5-11eb-985a-f74277ab8daa.png)
-**
-Azure Data Services Required to deploy:**
+
+**Azure Data Services Required to deploy:**
 
 1. Azure Data Lake - Host Source Data 
 2. Azure SQL Database - Host Destination

@@ -1,0 +1,87 @@
+{
+	"name": "TBL_Medications",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Patient_Database",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"DBName": {
+					"value": "@dataset().DBNameFromDataset",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"DBNameFromDataset": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Patient Data"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "START",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "STOP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "PATIENT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PAYER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ENCOUNTER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DESCRIPTION",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BASE_COST",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PAYER_COVERAGE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DISPENSES",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TOTALCOST",
+				"type": "nvarchar"
+			},
+			{
+				"name": "REASONCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "REASONDESCRIPTION",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Medications"
+		}
+	}
+}

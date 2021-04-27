@@ -1,0 +1,15 @@
+{
+	"name": "Multisite",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=smdemosql.database.windows.net;Initial Catalog=MultiSite"
+		},
+		"connectVia": {
+			"referenceName": "IR1",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

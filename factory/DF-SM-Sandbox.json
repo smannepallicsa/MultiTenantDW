@@ -1,0 +1,9 @@
+{
+	"name": "DF-SM-Sandbox",
+	"location": "westus2",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "141d84ea-869d-4c87-8203-05988785742c",
+		"tenantId": "a73c2217-ceb6-4cb6-b9ab-5011c80c3242"
+	}
+}

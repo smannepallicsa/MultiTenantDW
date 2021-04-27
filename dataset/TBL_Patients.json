@@ -1,0 +1,135 @@
+{
+	"name": "TBL_Patients",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Patient_Database",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"DBName": {
+					"value": "@dataset().DBNameFromDataset",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"DBNameFromDataset": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Patient Data"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BIRTHDATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DEATHDATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "SSN",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DRIVERS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PASSPORT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PREFIX",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FIRST",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LAST",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SUFFIX",
+				"type": "nvarchar"
+			},
+			{
+				"name": "MAIDEN",
+				"type": "nvarchar"
+			},
+			{
+				"name": "MARITAL",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RACE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ETHNICITY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "GENDER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BIRTHPLACE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ADDRESS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CITY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "STATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COUNTY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ZIP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LAT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LON",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HEALTHCARE_EXPENSES",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HEALTHCARE_COVERAGE",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Patients"
+		}
+	}
+}

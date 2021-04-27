@@ -1,0 +1,136 @@
+{
+	"name": "FF_Patients",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Datalake",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"ContainerName": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Patient Data"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "patients.csv",
+				"folderPath": {
+					"value": "@dataset().ContainerName",
+					"type": "Expression"
+				},
+				"fileSystem": "patientdata"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Id",
+				"type": "String"
+			},
+			{
+				"name": "BIRTHDATE",
+				"type": "String"
+			},
+			{
+				"name": "DEATHDATE",
+				"type": "String"
+			},
+			{
+				"name": "SSN",
+				"type": "String"
+			},
+			{
+				"name": "DRIVERS",
+				"type": "String"
+			},
+			{
+				"name": "PASSPORT",
+				"type": "String"
+			},
+			{
+				"name": "PREFIX",
+				"type": "String"
+			},
+			{
+				"name": "FIRST",
+				"type": "String"
+			},
+			{
+				"name": "LAST",
+				"type": "String"
+			},
+			{
+				"name": "SUFFIX",
+				"type": "String"
+			},
+			{
+				"name": "MAIDEN",
+				"type": "String"
+			},
+			{
+				"name": "MARITAL",
+				"type": "String"
+			},
+			{
+				"name": "RACE",
+				"type": "String"
+			},
+			{
+				"name": "ETHNICITY",
+				"type": "String"
+			},
+			{
+				"name": "GENDER",
+				"type": "String"
+			},
+			{
+				"name": "BIRTHPLACE",
+				"type": "String"
+			},
+			{
+				"name": "ADDRESS",
+				"type": "String"
+			},
+			{
+				"name": "CITY",
+				"type": "String"
+			},
+			{
+				"name": "STATE",
+				"type": "String"
+			},
+			{
+				"name": "COUNTY",
+				"type": "String"
+			},
+			{
+				"name": "ZIP",
+				"type": "String"
+			},
+			{
+				"name": "LAT",
+				"type": "String"
+			},
+			{
+				"name": "LON",
+				"type": "String"
+			},
+			{
+				"name": "HEALTHCARE_EXPENSES",
+				"type": "String"
+			},
+			{
+				"name": "HEALTHCARE_COVERAGE",
+				"type": "String"
+			}
+		]
+	}
+}

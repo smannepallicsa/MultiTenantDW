@@ -1,0 +1,41 @@
+{
+	"name": "TBL_Load_Control",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Patient_Database",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"DBName": {
+					"value": "@dataset().DBNameFromDataset",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"DBNameFromDataset": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Source_Container",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Destination_Database",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Load_Control"
+		}
+	}
+}

@@ -1,0 +1,68 @@
+{
+	"name": "FF_Observations",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Datalake",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"ContainerName": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Patient Data"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "observations.csv",
+				"folderPath": {
+					"value": "@dataset().ContainerName",
+					"type": "Expression"
+				},
+				"fileSystem": "patientdata"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "DATE",
+				"type": "String"
+			},
+			{
+				"name": "PATIENT",
+				"type": "String"
+			},
+			{
+				"name": "ENCOUNTER",
+				"type": "String"
+			},
+			{
+				"name": "CODE",
+				"type": "String"
+			},
+			{
+				"name": "DESCRIPTION",
+				"type": "String"
+			},
+			{
+				"name": "VALUE",
+				"type": "String"
+			},
+			{
+				"name": "UNITS",
+				"type": "String"
+			},
+			{
+				"name": "TYPE",
+				"type": "String"
+			}
+		]
+	}
+}

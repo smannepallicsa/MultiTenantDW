@@ -1,0 +1,335 @@
+{
+	"name": "Load Patients",
+	"properties": {
+		"activities": [
+			{
+				"name": "Load Patients",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "Truncate Table dbo.Patients",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Id",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Id"
+								}
+							},
+							{
+								"source": {
+									"name": "BIRTHDATE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "BIRTHDATE"
+								}
+							},
+							{
+								"source": {
+									"name": "DEATHDATE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DEATHDATE"
+								}
+							},
+							{
+								"source": {
+									"name": "SSN",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "SSN"
+								}
+							},
+							{
+								"source": {
+									"name": "DRIVERS",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DRIVERS"
+								}
+							},
+							{
+								"source": {
+									"name": "PASSPORT",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PASSPORT"
+								}
+							},
+							{
+								"source": {
+									"name": "PREFIX",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PREFIX"
+								}
+							},
+							{
+								"source": {
+									"name": "FIRST",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "FIRST"
+								}
+							},
+							{
+								"source": {
+									"name": "LAST",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LAST"
+								}
+							},
+							{
+								"source": {
+									"name": "SUFFIX",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "SUFFIX"
+								}
+							},
+							{
+								"source": {
+									"name": "MAIDEN",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "MAIDEN"
+								}
+							},
+							{
+								"source": {
+									"name": "MARITAL",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "MARITAL"
+								}
+							},
+							{
+								"source": {
+									"name": "RACE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "RACE"
+								}
+							},
+							{
+								"source": {
+									"name": "ETHNICITY",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ETHNICITY"
+								}
+							},
+							{
+								"source": {
+									"name": "GENDER",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "GENDER"
+								}
+							},
+							{
+								"source": {
+									"name": "BIRTHPLACE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "BIRTHPLACE"
+								}
+							},
+							{
+								"source": {
+									"name": "ADDRESS",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ADDRESS"
+								}
+							},
+							{
+								"source": {
+									"name": "CITY",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CITY"
+								}
+							},
+							{
+								"source": {
+									"name": "STATE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "STATE"
+								}
+							},
+							{
+								"source": {
+									"name": "COUNTY",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "COUNTY"
+								}
+							},
+							{
+								"source": {
+									"name": "ZIP",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ZIP"
+								}
+							},
+							{
+								"source": {
+									"name": "LAT",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LAT"
+								}
+							},
+							{
+								"source": {
+									"name": "LON",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LON"
+								}
+							},
+							{
+								"source": {
+									"name": "HEALTHCARE_EXPENSES",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "HEALTHCARE_EXPENSES"
+								}
+							},
+							{
+								"source": {
+									"name": "HEALTHCARE_COVERAGE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "HEALTHCARE_COVERAGE"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "FF_Patients",
+						"type": "DatasetReference",
+						"parameters": {
+							"ContainerName": {
+								"value": "@pipeline().parameters.ContainerNameFromPipeline",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "TBL_Patients",
+						"type": "DatasetReference",
+						"parameters": {
+							"DBNameFromDataset": {
+								"value": "@pipeline().parameters.DBNameFromPipeline",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			}
+		],
+		"parameters": {
+			"DBNameFromPipeline": {
+				"type": "string"
+			},
+			"ContainerNameFromPipeline": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Patient Data"
+		},
+		"annotations": []
+	}
+}

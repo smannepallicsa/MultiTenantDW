@@ -1,0 +1,30 @@
+{
+	"name": "VW_Medications",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Patient_Database",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"DBName": {
+					"value": "@dataset().DBNameFromDataset",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"DBNameFromDataset": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Patient Data"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "VW_Medications"
+		}
+	}
+}

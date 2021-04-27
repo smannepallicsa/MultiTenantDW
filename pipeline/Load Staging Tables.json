@@ -1,0 +1,111 @@
+{
+	"name": "Load Staging Tables",
+	"properties": {
+		"activities": [
+			{
+				"name": "Load Procedures",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Load Procedures",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"DBNameFromPipeline": {
+							"value": "@pipeline().parameters.DBNameFromWorkflow",
+							"type": "Expression"
+						},
+						"ContainerNameFromPipeline": {
+							"value": "@pipeline().parameters.ContainerNameFromWorkflow",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			{
+				"name": "Load Medications",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Load Medications",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"DBNameFromPipeline": {
+							"value": "@pipeline().parameters.DBNameFromWorkflow",
+							"type": "Expression"
+						},
+						"ContainerNameFromDataset": {
+							"value": "@pipeline().parameters.ContainerNameFromWorkflow",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			{
+				"name": "Load Observations",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Load Observations",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"DBNameFromPipeline": {
+							"value": "@pipeline().parameters.DBNameFromWorkflow",
+							"type": "Expression"
+						},
+						"ContainerNameFromPipeline": {
+							"value": "@pipeline().parameters.ContainerNameFromWorkflow",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			{
+				"name": "Load Patients",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Load Patients",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"DBNameFromPipeline": {
+							"value": "@pipeline().parameters.DBNameFromWorkflow",
+							"type": "Expression"
+						},
+						"ContainerNameFromPipeline": {
+							"value": "@pipeline().parameters.ContainerNameFromWorkflow",
+							"type": "Expression"
+						}
+					}
+				}
+			}
+		],
+		"parameters": {
+			"DBNameFromWorkflow": {
+				"type": "string"
+			},
+			"ContainerNameFromWorkflow": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "Patient Data"
+		},
+		"annotations": []
+	}
+}

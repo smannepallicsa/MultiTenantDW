@@ -1,0 +1,65 @@
+{
+	"name": "TBL_Procedures",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Patient_Database",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"DBName": {
+					"value": "@dataset().DBNameFromDataset",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"DBNameFromDataset": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Patient Data"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "PATIENT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ENCOUNTER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DESCRIPTION",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BASE_COST",
+				"type": "nvarchar"
+			},
+			{
+				"name": "REASONCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "REASONDESCRIPTION",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Procedures"
+		}
+	}
+}

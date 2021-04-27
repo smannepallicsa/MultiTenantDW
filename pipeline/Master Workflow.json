@@ -1,0 +1,138 @@
+{
+	"name": "Master Workflow",
+	"properties": {
+		"activities": [
+			{
+				"name": "Get Database List",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "ClearTables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "Select [Source_Container],[Destination_Database]\nfrom Load_Control;",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "TBL_Load_Control",
+						"type": "DatasetReference",
+						"parameters": {
+							"DBNameFromDataset": "Multisite"
+						}
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Get Database List",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get Database List').output.value",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Load Staging Tables",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "Load Staging Tables",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"DBNameFromWorkflow": {
+										"value": "@item().Destination_Database",
+										"type": "Expression"
+									},
+									"ContainerNameFromWorkflow": {
+										"value": "@item().Source_Container",
+										"type": "Expression"
+									}
+								}
+							}
+						},
+						{
+							"name": "Aggregate to Multisite",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "Load Staging Tables",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "Aggregate to Multisite",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"DBNameFromPipeline": {
+										"value": "@item().Destination_Database",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "ClearTables",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[sp_cleartables]"
+				},
+				"linkedServiceName": {
+					"referenceName": "Multisite",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "Patient Data"
+		},
+		"annotations": []
+	}
+}

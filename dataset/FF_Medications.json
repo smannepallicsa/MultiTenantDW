@@ -1,0 +1,88 @@
+{
+	"name": "FF_Medications",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Datalake",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"ContainerName": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "Patient Data"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "medications.csv",
+				"folderPath": {
+					"value": "@dataset().ContainerName",
+					"type": "Expression"
+				},
+				"fileSystem": "patientdata"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "START",
+				"type": "String"
+			},
+			{
+				"name": "STOP",
+				"type": "String"
+			},
+			{
+				"name": "PATIENT",
+				"type": "String"
+			},
+			{
+				"name": "PAYER",
+				"type": "String"
+			},
+			{
+				"name": "ENCOUNTER",
+				"type": "String"
+			},
+			{
+				"name": "CODE",
+				"type": "String"
+			},
+			{
+				"name": "DESCRIPTION",
+				"type": "String"
+			},
+			{
+				"name": "BASE_COST",
+				"type": "String"
+			},
+			{
+				"name": "PAYER_COVERAGE",
+				"type": "String"
+			},
+			{
+				"name": "DISPENSES",
+				"type": "String"
+			},
+			{
+				"name": "TOTALCOST",
+				"type": "String"
+			},
+			{
+				"name": "REASONCODE",
+				"type": "String"
+			},
+			{
+				"name": "REASONDESCRIPTION",
+				"type": "String"
+			}
+		]
+	}
+}

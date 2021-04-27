@@ -1,0 +1,80 @@
+{
+	"name": "Multisite_Observations",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Multisite",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Patient Data"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Site_Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "START",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "STOP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "PATIENT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PAYER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ENCOUNTER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DESCRIPTION",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BASE_COST",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PAYER_COVERAGE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DISPENSES",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TOTALCOST",
+				"type": "nvarchar"
+			},
+			{
+				"name": "REASONCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "REASONDESCRIPTION",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Observations"
+		}
+	}
+}

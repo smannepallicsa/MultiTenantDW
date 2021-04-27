@@ -1,0 +1,165 @@
+{
+	"name": "Load Procedures",
+	"properties": {
+		"activities": [
+			{
+				"name": "Load Procedures",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "Truncate Table dbo.Procedures",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "DATE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DATE"
+								}
+							},
+							{
+								"source": {
+									"name": "PATIENT",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PATIENT"
+								}
+							},
+							{
+								"source": {
+									"name": "ENCOUNTER",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ENCOUNTER"
+								}
+							},
+							{
+								"source": {
+									"name": "CODE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CODE"
+								}
+							},
+							{
+								"source": {
+									"name": "DESCRIPTION",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DESCRIPTION"
+								}
+							},
+							{
+								"source": {
+									"name": "BASE_COST",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "BASE_COST"
+								}
+							},
+							{
+								"source": {
+									"name": "REASONCODE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "REASONCODE"
+								}
+							},
+							{
+								"source": {
+									"name": "REASONDESCRIPTION",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "REASONDESCRIPTION"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "FF_Procedures",
+						"type": "DatasetReference",
+						"parameters": {
+							"ContainerName": {
+								"value": "@pipeline().parameters.ContainerNameFromPipeline",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "TBL_Procedures",
+						"type": "DatasetReference",
+						"parameters": {
+							"DBNameFromDataset": {
+								"value": "@pipeline().parameters.DBNameFromPipeline",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			}
+		],
+		"parameters": {
+			"DBNameFromPipeline": {
+				"type": "string"
+			},
+			"ContainerNameFromPipeline": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Patient Data"
+		},
+		"annotations": []
+	}
+}

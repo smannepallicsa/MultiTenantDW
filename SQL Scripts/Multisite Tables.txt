@@ -1,0 +1,92 @@
+
+CREATE TABLE [dbo].[Load_Control](
+	[Id] [int] NULL,
+	[Source_Container] [nvarchar](max) NULL,
+	[Destination_Database] [nvarchar](max) NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+
+
+CREATE TABLE [dbo].[Medications](
+	[Site_Name] [nvarchar](max) NULL,
+	[START] [datetime] NULL,
+	[STOP] [datetime] NULL,
+	[PATIENT] [nvarchar](max) NULL,
+	[PAYER] [nvarchar](max) NULL,
+	[ENCOUNTER] [nvarchar](max) NULL,
+	[CODE] [nvarchar](max) NULL,
+	[DESCRIPTION] [nvarchar](max) NULL,
+	[BASE_COST] [nvarchar](max) NULL,
+	[PAYER_COVERAGE] [nvarchar](max) NULL,
+	[DISPENSES] [nvarchar](max) NULL,
+	[TOTALCOST] [nvarchar](max) NULL,
+	[REASONCODE] [nvarchar](max) NULL,
+	[REASONDESCRIPTION] [nvarchar](max) NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+
+CREATE TABLE [dbo].[Observations](
+	[SieName] [nvarchar](max) NULL,
+	[DATE] [datetime] NULL,
+	[PATIENT] [nvarchar](max) NULL,
+	[ENCOUNTER] [nvarchar](max) NULL,
+	[CODE] [nvarchar](max) NULL,
+	[DESCRIPTION] [nvarchar](max) NULL,
+	[VALUE] [nvarchar](max) NULL,
+	[UNITS] [nvarchar](max) NULL,
+	[TYPE] [nvarchar](max) NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+
+CREATE TABLE [dbo].[Patients](
+	[SiteName] [nvarchar](max) NULL,
+	[Id] [nvarchar](max) NULL,
+	[BIRTHDATE] [datetime] NULL,
+	[DEATHDATE] [datetime] NULL,
+	[SSN] [nvarchar](max) NULL,
+	[DRIVERS] [nvarchar](max) NULL,
+	[PASSPORT] [nvarchar](max) NULL,
+	[PREFIX] [nvarchar](max) NULL,
+	[FIRST] [nvarchar](max) NULL,
+	[LAST] [nvarchar](max) NULL,
+	[SUFFIX] [nvarchar](max) NULL,
+	[MAIDEN] [nvarchar](max) NULL,
+	[MARITAL] [nvarchar](max) NULL,
+	[RACE] [nvarchar](max) NULL,
+	[ETHNICITY] [nvarchar](max) NULL,
+	[GENDER] [nvarchar](max) NULL,
+	[BIRTHPLACE] [nvarchar](max) NULL,
+	[ADDRESS] [nvarchar](max) NULL,
+	[CITY] [nvarchar](max) NULL,
+	[STATE] [nvarchar](max) NULL,
+	[COUNTY] [nvarchar](max) NULL,
+	[ZIP] [nvarchar](max) NULL,
+	[LAT] [nvarchar](max) NULL,
+	[LON] [nvarchar](max) NULL,
+	[HEALTHCARE_EXPENSES] [nvarchar](max) NULL,
+	[HEALTHCARE_COVERAGE] [nvarchar](max) NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+
+CREATE TABLE [dbo].[Procedures](
+	[SiteName] [nvarchar](max) NULL,
+	[DATE] [datetime] NULL,
+	[PATIENT] [nvarchar](max) NULL,
+	[ENCOUNTER] [nvarchar](max) NULL,
+	[CODE] [nvarchar](max) NULL,
+	[DESCRIPTION] [nvarchar](max) NULL,
+	[BASE_COST] [nvarchar](max) NULL,
+	[REASONCODE] [nvarchar](max) NULL,
+	[REASONDESCRIPTION] [nvarchar](max) NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+
+create procedure [dbo].[sp_cleartables]
+AS
+begin
+
+
+Truncate table [dbo].[Medications];
+Truncate table [dbo].[Observations];
+Truncate table [dbo].[Patients];
+Truncate table [dbo].[Procedures];
